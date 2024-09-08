@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anibrary</title>
+    <!-- Font Awsome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- Swiper Bundle -->
+    <link rel="stylesheet" href="./css/swiper-bundle.css">
+    <!-- Main Page CSS -->
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            window.onkeydown = (e) => {
+                if (e.key == 'Enter') {
+                    if ($('input[class=input-search]').val() != '') {
+                        alert($('input[class=input-search]').val());
+                        $('input[class=input-search]').val('');
+                    }
+                }
+            }
+
+            $('.btn-search').click(function () {
+                if ($('input[class=input-search]').val() != '') {
+                    alert($('input[class=input-search]').val());
+                    $('input[class=input-search]').val('');
+                } else {
+                    $('input[class=input-search]').val('');
+                }
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <div id="warp">
+        <!-- Header -->
+        <header>
+            <!-- Logo And Gnb -->
+            <div class="logo_gnb container cf">
+                <a href="#">
+                    <img src="./images/main_logo.png" alt="main logo" id="main_logo">
+                </a>
+                <div class="search-box">
+                    <button class="btn-search"><i class="fa fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Search Anime By Name...">
+                </div>
+            </div>
+
+        </header>
+
+        <!-- Main Swiper -->
+        <!-- <section id="main_swiper container"> -->
+        <section id="main_swiper">
+            <!-- A. 스와이퍼 최상위 구조 클래스 -->
+            <div class="swiper-container">
+                <!-- B. 스와이퍼 될 Contents 부모 클래스 -->
+                <div class="swiper-wrapper">
+                    <!-- C-1. 스와이퍼 될 Slider 각각 내용들 -->
+                    <div class="swiper-slide slide">
+                        <img src="./images/main_slide_img01_jp.png" alt="스와이퍼이미지01">
+                        <div class="swiper_btn">
+                            <button class="btn">Show Info +</button>
+                            <button class="btn">Show Page</button>
+                        </div>
+                    </div>
+                    <!-- /C-1. 스와이퍼 될 Slider 각각 내용들 -->
+
+                    <!-- C-2. 스와이퍼 될 Slider 각각 내용들 -->
+                    <div class="swiper-slide slide">
+                        <img src="./images/main_slide_img02_jp.png" alt="스와이퍼이미지02">
+                        <div class="swiper_btn">
+                            <button class="btn">Show Info +</button>
+                            <button class="btn">Show Page</button>
+                        </div>
+                    </div>
+                    <!-- /C-2. 스와이퍼 될 Slider 각각 내용들 -->
+
+                    <!-- C-3. 스와이퍼 될 Slider 각각 내용들 -->
+                    <div class="swiper-slide slide">
+                        <img src="./images/main_slide_img03_jp.png" alt="스와이퍼이미지03">
+                        <div class="swiper_btn">
+                            <button class="btn">Show Info +</button>
+                            <button class="btn">Show Page</button>
+                        </div>
+                    </div>
+                    <!-- /C-3. 스와이퍼 될 Slider 각각 내용들 -->
+                </div>
+
+            </div>
+            <!-- /B. 스와이퍼 될 Contents 부모 클래스 -->
+            <!-- D. 스와이퍼 넘버링 클래스 -->
+            <div class="swiper-pagination"></div>
+            <!-- /D. 스와이퍼 넘버링 클래스 -->
+            <!-- E. 스와이퍼 좌우 화살표 클래스 -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- /E. 스와이퍼 좌우 화살표 클래스 -->
+    </div>
+    <!-- /A. 스와이퍼 최상위 구조 클래스 -->
+    </div>
+    <!-- /1. 스와이퍼 페이지 영역 -->
+    </section>
+
+    <div class="container">
+
+        <button class="btn">123</button>
+    </div>
+
+    </div>
+</body>
+<script src="./js/swiper-bundle.js"></script>
+<script src="./js/swiperCustom.js"></script>
+
+</html>

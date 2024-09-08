@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(() => {
+            let mal_id;
+            if (localStorage.getItem("id")) {
+                alert(localStorage.getItem("id"))
+                mal_id = localStorage.getItem("id")
+
+            }
+
+            let anime_url = "https://api.jikan.moe/v4/anime"
+            let anime_top_url = "https://api.jikan.moe/v4/top/anime"
+            let request = $.ajax({
+                // url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&limit=12`,
+                // url: `${anime_url}?q=${search}&sfw&limit=10`,
+                // url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&type=movie&start_date=2015-01-01`,
+                url: `https://api.jikan.moe/v4/anime/${mal_id}`,
+                method: "GET",
+            });
+
+            
+
+            request.done(function (req) {
+                // console.log(req)
+                // alert(req.data.length)
+
+                $('#log').append(`<img src="${req.data.images.jpg.image_url}" alt="")"><br>`)
+                $('#log').append(`<h2>${req.data.title_japanese}</h2><br>`)
+                $('#log').append(`<p>${req.data.synopsis}</p><br>`)
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
+
+
+            let more = $.ajax({
+                // url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&limit=12`,
+                // url: `${anime_url}?q=${search}&sfw&limit=10`,
+                // url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&type=movie&start_date=2015-01-01`,
+                url: `https://api.jikan.moe/v4/anime/${mal_id}/themes`,
+                method: "GET",
+            });
+
+            more.done(function (req) {
+                console.log(req)
+               
+                
+            });
+
+            more.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
+
+           
+        })
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <h2>ListViewer Anime</h2>
+        <div id="log">
+        </div>
+
+    </div>
+</body>
+
+</html>

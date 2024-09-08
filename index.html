@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I_Flex</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(() => {
+            // let search = 'Got Reincarnated as a Slime'
+            let search = 'naruto'
+            let anime_url = "https://api.jikan.moe/v4/anime/"
+            let request = $.ajax({
+                // url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&limit=12`,
+                // url: `${anime_url}?q=${search}&sfw&limit=10`,
+                // url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&type=movie&start_date=2015-01-01`,
+                url: `https://api.jikan.moe/v4/anime?q=${search}`,
+                method: "GET",
+                dataType: "json"
+            });
+
+            request.done(function (req) {
+                console.log(req)
+                // alert(req.data.length)
+
+                for (let i = 0; i < req.data.length; i++) {
+                    $('#log').append(`<img src="${req.data[i].images.jpg.image_url}" alt="" onclick="chkMalId('${req.data[i].mal_id}')"><br>`)
+                    $('#log').append(`<h2>${req.data[i].mal_id}</h2><br>`)
+                    // $('#log').append(`<img src="${req.data[i].images.jpg.large_image_url}" alt=""><br>`)
+                }
+                // $('#log').html(`<img src="${req.data[i].images.jpg.image_url}" alt=""><br>`)
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
+
+
+            console.log(request)
+        })
+    </script>
+    <style>
+        #container {
+            width: 100px;
+            height: 100px;
+            background: #000;
+        }
+
+        img {
+            padding: 20px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="" alt="" onclick="method(1)">
+    <a href="contetns.html">123</a>
+    <div id="wrap">
+        <h2>ListViewer Anime</h2>
+        <div id="log">
+        </div>
+
+        <div id="container">
+
+        </div>
+    </div>
+    <script>
+        function chkMalId(num) {
+            var mal_id = num;
+            localStorage.setItem("id", mal_id);
+            alert(mal_id)
+        }
+    </script>
+</body>
+
+</html>
