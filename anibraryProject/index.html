@@ -19,6 +19,7 @@
 
     <script>
         $(() => {
+         
             window.onkeydown = (e) => {
                 if (e.key == 'Enter') {
                     if ($('input[class=input-search]').val() != '') {
@@ -37,6 +38,45 @@
                 }
             })
 
+            // Request TOP ANIME List
+            let anime_url = "https://api.jikan.moe/v4/anime"
+            let anime_top_url = "https://api.jikan.moe/v4/top/anime"
+            let request1 = $.ajax({
+                url: `${anime_top_url}?start_date=2024-09-08&limit=7&type=tv`,
+                method: "GET",
+                dataType: "json"
+            });
+            let request2 = $.ajax({
+                url: `${anime_top_url}?start_date=2024-09-08&limit=7&type=movie`,
+                method: "GET",
+                dataType: "json"
+            });
+
+            request1.done(function (req) {
+                console.log(req)
+
+                for (let i = 0; i < req.data.length; i++) {
+                    $('.top_anime_list1').append(`<img src="${req.data[i].images.jpg.image_url}" alt="" onclick="chkMalId('${req.data[i].mal_id}')">`)
+                    // $('.top_anime_list1').append(`<h2>${req.data[i].mal_id}</h2><br>`)
+                }
+            });
+
+            request1.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
+
+            request2.done(function (req) {
+                console.log(req)
+
+                for (let i = 0; i < req.data.length; i++) {
+                    $('.top_anime_list2').append(`<img src="${req.data[i].images.jpg.image_url}" alt="" onclick="chkMalId('${req.data[i].mal_id}')">`)
+                    // $('.top_anime_list1').append(`<h2>${req.data[i].mal_id}</h2><br>`)
+                }
+            });
+
+            request2.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
         })
     </script>
 </head>
@@ -60,63 +100,67 @@
 
         <!-- Main Swiper -->
         <!-- <section id="main_swiper container"> -->
-        <section id="main_swiper">
-            <!-- A. 스와이퍼 최상위 구조 클래스 -->
+        <section id="main_swiper" class="container">
+            <!-- Swiper TOB STC -->
             <div class="swiper-container">
-                <!-- B. 스와이퍼 될 Contents 부모 클래스 -->
+                <!--To Be Swiper parent -->
                 <div class="swiper-wrapper">
-                    <!-- C-1. 스와이퍼 될 Slider 각각 내용들 -->
+                    <!-- Swiper Content01 -->
                     <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img01_jp.png" alt="스와이퍼이미지01">
+                        <img src="./images/main_slide_img01_jp.png" alt="Swiper Image 01">
                         <div class="swiper_btn">
                             <button class="btn">Show Info +</button>
                             <button class="btn">Show Page</button>
                         </div>
                     </div>
-                    <!-- /C-1. 스와이퍼 될 Slider 각각 내용들 -->
+                    <!-- /Swiper Content01 -->
 
-                    <!-- C-2. 스와이퍼 될 Slider 각각 내용들 -->
+                    <!-- Swiper Content02 -->
                     <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img02_jp.png" alt="스와이퍼이미지02">
+                        <img src="./images/main_slide_img02_jp.png" alt="Swiper Image 02">
                         <div class="swiper_btn">
                             <button class="btn">Show Info +</button>
                             <button class="btn">Show Page</button>
                         </div>
                     </div>
-                    <!-- /C-2. 스와이퍼 될 Slider 각각 내용들 -->
+                    <!-- /Swiper Content02 -->
 
-                    <!-- C-3. 스와이퍼 될 Slider 각각 내용들 -->
+                    <!-- Swiper Content03 -->
                     <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img03_jp.png" alt="스와이퍼이미지03">
+                        <img src="./images/main_slide_img03_jp.png" alt="Swiper Image 03">
                         <div class="swiper_btn">
                             <button class="btn">Show Info +</button>
                             <button class="btn">Show Page</button>
                         </div>
                     </div>
-                    <!-- /C-3. 스와이퍼 될 Slider 각각 내용들 -->
+                    <!-- /Swiper Content03 -->
                 </div>
-
             </div>
-            <!-- /B. 스와이퍼 될 Contents 부모 클래스 -->
-            <!-- D. 스와이퍼 넘버링 클래스 -->
-            <div class="swiper-pagination"></div>
-            <!-- /D. 스와이퍼 넘버링 클래스 -->
-            <!-- E. 스와이퍼 좌우 화살표 클래스 -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <!-- /E. 스와이퍼 좌우 화살표 클래스 -->
-    </div>
-    <!-- /A. 스와이퍼 최상위 구조 클래스 -->
-    </div>
-    <!-- /1. 스와이퍼 페이지 영역 -->
-    </section>
+        </section>
+        <!-- /Main Swiper -->
 
-    <div class="container">
+        <!-- Main Contents -->
+        <main>
+            <!-- Top Anime List Section -->
+            <!-- TOP ANIME TITLE -->
+            <div class="top_anime_title container">
+                <h2>TOP ANIME</h2>
+            </div>
 
-        <button class="btn">123</button>
+            <!-- TOP ANIME LIST 1 -->
+            <div class="top_anime_list1"></div>
+
+            <!-- TOP ANIME LIST 2 -->
+            <div class="top_anime_list2"></div>
+            <!-- /Top Anime ListSection -->
+
+
+        </main>
+        <!-- /Main Contents -->
     </div>
 
-    </div>
+
+
 </body>
 <script src="./js/swiper-bundle.js"></script>
 <script src="./js/swiperCustom.js"></script>

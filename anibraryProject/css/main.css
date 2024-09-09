@@ -1,6 +1,7 @@
 @charset "UTF-8";
 #wrap {
-  width: 100vh;
+  /* width: 100vh; */
+  margin: 0 auto;
 }
 .container {
   width: 1440px;
@@ -34,6 +35,7 @@ header img {
   height: fit-content;
   position: relative;
   float: right;
+  margin-right: 2%;
 }
 .input-search {
   height: 35px;
@@ -89,19 +91,18 @@ header img {
 /* Main Swiper */
 #main_swiper {
   width: 100%;
+  /* width: 1440px; */
+  /* width: 1920px; */
+  text-align: center;
   height: 100%;
+  margin: 0 auto;
 }
 .swiper-slide {
   text-align: center;
-  position: relative;
 }
 .slid_bg img {
   width: 1920px;
-  height: 100vh;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -100;
+  height: 100%;
 }
 .swiper-slide:nth-of-type(2) {
   background-image: url(../images/main_slide_img01_bg.png);
@@ -122,10 +123,12 @@ header img {
   background-position: center;
 }
 
-.swiper-slide .swiper_btn {
+
+.swiper_btn {
   position: absolute;
-  left: 16%;
+  left: 25%;
   bottom: 20%;
+  transform: translate(-50%, -20%);
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -135,7 +138,7 @@ header img {
   position: relative;
   background-color: #e00219;
   border-radius: 4em;
-  font-size: 16px;
+  font-size: 1rem;
   color: white;
   padding: 0.8em 1.8em;
   cursor: pointer;
@@ -146,6 +149,8 @@ header img {
   transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s; /* Safari */
   margin-right: 20px;
+  width: 145px;
+  height: 44px;
 }
 
 .btn:hover {
@@ -180,4 +185,51 @@ header img {
 
 .btn:active {
   top: 1px;
+}
+
+/* Main Contents */
+/* Top Anime List Section */
+/* TOP ANIME TITLE */
+.top_anime_title h2{
+  font-family: 'Roboto', sans-serif;
+  width: max-content;
+  margin-left: 67px;
+  margin-top: 43px;
+  margin-bottom: 52px;
+  padding: 36px 0;
+  color: #e00219;
+  font-size: 4.375rem;
+  border-bottom: 2px solid #e00219;
+}
+
+/* TOP ANIME LIST */
+.top_anime_list1, .top_anime_list2 {
+  width: 1947px;
+  height: 316px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+.top_anime_list2{
+  margin-top: 88px;
+}
+
+@media screen and (max-width: 768px) {
+  .container{
+    width: 768px;
+  } 
+  #main_swiper img{
+    width: 768px;
+    height: 473px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .container{
+    width: 320px;
+  } 
+  #main_swiper img{
+    width: 320px;
+    height: 262px;
+  }
 }
