@@ -12,12 +12,12 @@
     <!-- Swiper Bundle -->
     <link rel="stylesheet" href="./css/swiper-bundle.css">
     <!-- Main Page CSS -->
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/main_2.css">
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-    <script src="./js/main.js"></script>
+    <script src="./js/main_2.js"></script>
 </head>
 
 <body>
@@ -29,9 +29,8 @@
                 <a href="#">
                     <img src="./images/main_logo.png" alt="main logo" id="main_logo">
                 </a>
-                <div class="search-box">
-                    <button class="btn-search"><i class="fa fa-search"></i></button>
-                    <input type="text" class="input-search" placeholder="Search Anime By Name...">
+                <div class="menu_icon">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </div>
             </div>
 
@@ -41,13 +40,12 @@
         <!-- <section id="main_swiper container"> -->
         <section id="main_swiper" class="container">
             <!-- Swiper TOB STC -->
-            <div class="swiper-container">
+            <div class="swiper-container swiper1">
                 <!--To Be Swiper parent -->
                 <div class="swiper-wrapper">
                     <!-- Swiper Content01 -->
-                    <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img01_jp.png" alt="Swiper Image 01">
-                        <div class="swiper_btn">
+                    <div class="swiper-slide slide1">
+                        <div class="swiper_btn container">
                             <button class="btn">Show Info +</button>
                             <button class="btn">Show Page</button>
                         </div>
@@ -55,21 +53,23 @@
                     <!-- /Swiper Content01 -->
 
                     <!-- Swiper Content02 -->
-                    <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img02_jp.png" alt="Swiper Image 02">
-                        <div class="swiper_btn">
-                            <button class="btn">Show Info +</button>
-                            <button class="btn">Show Page</button>
+                    <div class="swiper-slide slide2">
+                        <div class="container">
+                            <div class="swiper_btn">
+                                <button class="btn">Show Info +</button>
+                                <button class="btn">Show Page</button>
+                            </div>
                         </div>
                     </div>
                     <!-- /Swiper Content02 -->
 
                     <!-- Swiper Content03 -->
-                    <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img03_jp.png" alt="Swiper Image 03">
-                        <div class="swiper_btn">
-                            <button class="btn">Show Info +</button>
-                            <button class="btn">Show Page</button>
+                    <div class="swiper-slide slide3">
+                        <div class="container">
+                            <div class="swiper_btn">
+                                <button class="btn">Show Info +</button>
+                                <button class="btn">Show Page</button>
+                            </div>
                         </div>
                     </div>
                     <!-- /Swiper Content03 -->
@@ -87,42 +87,36 @@
             </div>
 
             <!-- TOP ANIME LIST 1 -->
-            <div class="top_anime_list1">
-            </div>
+            <div class="top_anime_banner1">
+                <ul class="top_anime_list1">
 
+                </ul>
+            </div>  
 
             <!-- TOP ANIME LIST 2 -->
-            <div class="top_anime_list2"></div>
+            <div class="top_anime_banner2">
+                <ul class="top_anime_list2">
+
+                </ul>
+            </div>
             <!-- /Top Anime ListSection -->
 
 
         </main>
         <!-- /Main Contents -->
     </div>
-    <script>
-        //Banner
-        timer();
-        var current = 0;
-        var $interval;
-
-        function timer() {
-            var $interval = setInterval(function () { slide() }, 2000);
-        }
-
-        function slide() {
-            $(".top_anime_list1").animate({ left: "-=187px" }, 1000, function () {
-                $(this).css({ "left": 0 });
-                $(".top_anime_list1").append($("ul").children("li").eq(0));
-            });
-            current++;
-            if (current == 5) current = 0;
-        }
-    </script>
 
 
 
 </body>
 <script src="./js/swiper-bundle.js"></script>
-<script src="./js/swiperCustom.js"></script>
-
+<script src="./js/swiperCustom_1.js"></script>
+<script>
+    function chkMalId(num) {
+        var mal_id = num;
+        localStorage.setItem("id", mal_id);
+        alert(mal_id)
+    }
+</script>
+<!-- <script src="./js/banner.js"></script> -->
 </html>
