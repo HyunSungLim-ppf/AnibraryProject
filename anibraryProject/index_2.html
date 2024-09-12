@@ -82,26 +82,69 @@
         <main>
             <!-- Top Anime List Section -->
             <!-- TOP ANIME TITLE -->
-            <div class="top_anime_title container">
-                <h2>TOP ANIME</h2>
+            <div class="top_anime container">
+                <h2>Top Animation</h2>
+
+                <!-- TOP ANIME LIST 1 -->
+                <div class="top_anime_banner1">
+                    <ul class="top_anime_list1">
+
+                    </ul>
+                </div>
+
+                <!-- TOP ANIME LIST 2 -->
+                <div class="top_anime_banner2">
+                    <ul class="top_anime_list2">
+
+                    </ul>
+                </div>
+                <!-- /Top Anime ListSection -->
             </div>
 
-            <!-- TOP ANIME LIST 1 -->
-            <div class="top_anime_banner1">
-                <ul class="top_anime_list1">
-
-                </ul>
-            </div>  
-
-            <!-- TOP ANIME LIST 2 -->
-            <div class="top_anime_banner2">
-                <ul class="top_anime_list2">
-
-                </ul>
-            </div>
-            <!-- /Top Anime ListSection -->
 
 
+
+
+            <!-- QNA TAB -->
+            <ul class="qna_list container cf">
+                <li class="question">
+                    <div class="question_container">
+                        <h2>애니브러리는 어떤 서비스 인가요?</h2>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                    <div class="answer">
+                        내가 아냐 이 씨2발 세끼야^^
+                    </div>
+                </li>
+                <li class="question">
+                    <div class="question_container">
+                        <h2>씨발</h2>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                    <div class="answer">
+                        씨발 애미
+                    </div>
+                </li>
+                <li class="question">
+                    <div class="question_container">
+                        <h2>아 씨발 살자 마렵누</h2>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                    <div class="answer">
+                        개 씨발 ㅈ같다.
+                    </div>
+                </li>
+                <li class="question">
+                    <div class="question_container">
+                        <h2>날씨 애미 디짐?</h2>
+                        <i class="fa fa-plus" aria -hidden="true"></i>
+                    </div>
+                    <div class="answer">
+                        날씨 어매 전기톱으로 썰린것 같으면 개추<br>
+                        헉 그런 말은 삼가해주세요 개추 ㄹㅇㅋㅋ
+                    </div>
+                </li>
+            </ul>
         </main>
         <!-- /Main Contents -->
     </div>
@@ -117,6 +160,18 @@
         localStorage.setItem("id", mal_id);
         alert(mal_id)
     }
+    // QNA 관련
+    $('.question').click(function () {
+        const idx = $(this).index();
+        $('.fa-plus').stop().css({ transform: "rotate(0deg)" })
+        if ($('.fa-plus').eq(idx).css('transform') == "matrix(0.707107, -0.707107, 0.707107, 0.707107, 0, 0)") {
+            $('.fa-plus').eq(idx).stop().css({ transform: "rotate(0deg)" })
+        } else {
+            $('.fa-plus').eq(idx).stop().css({ transform: "rotate(315deg)" })
+        }
+        $('.answer').stop().slideUp(100);
+        $('.answer').eq(idx).stop().slideToggle(200);
+    })
 </script>
-<!-- <script src="./js/banner.js"></script> -->
+
 </html>

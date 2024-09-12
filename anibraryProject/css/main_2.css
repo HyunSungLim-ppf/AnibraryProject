@@ -32,7 +32,7 @@ header .menu_icon {
 /* Main Swiper */
 #main_swiper {
   width: 100%;
-  height: 100%;
+  height: 62%;
 }
 .slide1,
 .slide2,
@@ -124,7 +124,7 @@ header .menu_icon {
 /* Main Contents */
 /* Top Anime List Section */
 /* TOP ANIME TITLE */
-.top_anime_title h2 {
+.top_anime h2 {
   font-family: "Roboto", sans-serif;
   width: max-content;
   margin-left: 67px;
@@ -132,13 +132,13 @@ header .menu_icon {
   margin-bottom: 52px;
   padding: 36px 0;
   color: #e00219;
-  font-size: 2em;
+  font-size: 1.5em;
   border-bottom: 2px solid #e00219;
 }
 
 
 /* Banner1 */
-.top_anime_list1, .top_anime_list1 li {
+.top_anime_list1, .top_anime_list1 {
   list-style: none;
 }
 .top_anime_list1 img {
@@ -149,7 +149,7 @@ header .menu_icon {
 .top_anime_banner1 {
   overflow: hidden;
   display: flex;
-  max-width: 1920px;
+  /* max-width: 1920px; */
   margin: 30px auto;
 }
 .top_anime_banner1 .top_anime_list1 {
@@ -175,7 +175,7 @@ header .menu_icon {
 .top_anime_banner2 {
   overflow: hidden;
   display: flex;
-  max-width: 1920px;
+  /* max-width: 1920px; */
   margin: 30px auto;
 }
 .top_anime_banner2 .top_anime_list2 {
@@ -190,6 +190,65 @@ header .menu_icon {
   padding: 20px;
 }
 
+/* QNA TAB */
+.qna_list li{
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  font-weight: 550;
+  color: #fff;
+}
+.question{
+  padding: 20px;
+}
+.answer{
+  padding-top: 10px;
+  border-top: 1px solid #fff;
+  display: none;
+}
+.question_container{
+  padding-bottom: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.fa-plus{
+  transition: all 0.2s;
+}
+.on{
+  display: block;
+}
+.question {
+  --borderWidth: 3px;
+  background: #1D1F20;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+.question:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #E00219, #B45A00, #757C00, #008D00, #00965E, #009BAC, #EDE9D0, #00BEC4);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 
 @keyframes flowLeftRolling {
   0% {

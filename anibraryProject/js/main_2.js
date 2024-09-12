@@ -22,13 +22,13 @@ $(() => {
     let anime_url = "https://api.jikan.moe/v4/anime"
     let anime_top_url = "https://api.jikan.moe/v4/top/anime"
     let request1 = $.ajax({
-        url: `${anime_top_url}?start_date=2024-09-08&limit=7&type=tv`,
+        url: `${anime_top_url}?start_date=2024-09-08&limit=14&type=tv`,
         // url: `${anime_top_url}?start_date=2024-09-08&limit=7&rating=r`,
         method: "GET",
         dataType: "json"
     });
     let request2 = $.ajax({
-        url: `${anime_top_url}?start_date=2024-09-08&limit=7&type=movie`,
+        url: `${anime_top_url}?start_date=2024-09-08&limit=14&type=movie`,
         method: "GET",
         dataType: "json"
     });
@@ -142,4 +142,6 @@ function setFlowBanner2() {
     $('.top_anime_list2').on('mouseleave', function () {
         $wrap.find('.top_anime_list2').css('animation-play-state', 'running');
     });
+
+
 }
