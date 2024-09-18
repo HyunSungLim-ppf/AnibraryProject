@@ -18,6 +18,29 @@
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <script src="./js/main_2.js"></script>
+    <script>
+        $(() => {
+            // 검색후 이동 기능
+            $('.search_container input').focus(function () {
+                $('.search_container span').css({ "font-size": "5px" })
+                $(this).css({ display: "block" })
+            })
+
+            $('.search_btn').click(function () {
+                if ($('input[class=input-search]').val() != '') {
+                    alert($('input[id="search"]').val());
+                    searchAnimeByName($('input[id="search"]').val())
+                } else {
+                    $('input[id="search"]').val('');
+                }
+            })
+        })
+        function searchAnimeByName(name) {
+            const anime_name = name;
+            localStorage.setItem("anime_name", anime_name);
+            window.location = "searched_contents.html"
+        }
+    </script>
 </head>
 
 <body>
@@ -29,11 +52,18 @@
                 <a href="#">
                     <img src="./images/main_logo.png" alt="main logo" id="main_logo">
                 </a>
-                <div class="menu_icon">
+                <!-- <div class="menu_icon">
                     <i class="fa fa-bars" aria-hidden="true"></i>
+                </div> -->
+                <button class="search_btn">Search</button>
+                <div class="search_form">
+                    <div class="form-item">
+                        <input type="text" id="search" autocomplete="off" required>
+                        <label for="search">Search Anime Like "Naruto"...</label>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </header>
 
         <!-- Main Swiper -->
@@ -45,9 +75,17 @@
                 <div class="swiper-wrapper">
                     <!-- Swiper Content01 -->
                     <div class="swiper-slide slide1">
-                        <div class="swiper_btn container">
-                            <button class="btn">Show Info +</button>
-                            <button class="btn">Show Page</button>
+                        <div class="container">
+                            <div class="swiper_text">
+                                <h1>鬼滅の刃</h1>
+                                <p>
+                                    舞台は、大正日本。 炭を売る心優しき少年・炭治郎の日常は、家族を鬼に皆殺しにされたことで一変した。
+                                </p>
+                            </div>
+                            <div class="swiper_btn">
+                                <button class="btn">Show Info +</button>
+                                <button class="btn">Show Page</button>
+                            </div>
                         </div>
                     </div>
                     <!-- /Swiper Content01 -->
@@ -55,6 +93,12 @@
                     <!-- Swiper Content02 -->
                     <div class="swiper-slide slide2">
                         <div class="container">
+                            <div class="swiper_text">
+                                <h1>呪術廻戦</h1>
+                                <p>
+                                    他者との関わりを恐れ呪術師になることにも生きることにも消極的だった乙骨だが、個性豊かな同級生と関わる内に生きるための自信を持ち、里香を自分から解呪するために呪術師を目指すようになる。
+                                </p>
+                            </div>
                             <div class="swiper_btn">
                                 <button class="btn">Show Info +</button>
                                 <button class="btn">Show Page</button>
@@ -66,6 +110,12 @@
                     <!-- Swiper Content03 -->
                     <div class="swiper-slide slide3">
                         <div class="container">
+                            <div class="swiper_text">
+                                <h1>僕ぼくのヒーローアカデミア</h1>
+                                <p>
+                                    『僕のヒーローアカデミア』（ぼくのヒーローアカデミア）は、堀越耕平の同名の漫画を原作とするボンズ制作の日本のアニメ作品。
+                                </p>
+                            </div>
                             <div class="swiper_btn">
                                 <button class="btn">Show Info +</button>
                                 <button class="btn">Show Page</button>
@@ -83,7 +133,8 @@
             <!-- Top Anime List Section -->
             <!-- TOP ANIME TITLE -->
             <div class="top_anime container">
-                <h2>Top Animation</h2>
+                <!-- <h2>Top Animation</h2> -->
+                <h2>지금 뜨는 애니메이션</h2>
 
                 <!-- TOP ANIME LIST 1 -->
                 <div class="top_anime_banner1">
@@ -101,50 +152,94 @@
                 <!-- /Top Anime ListSection -->
             </div>
 
-
+            <!-- Provided Service Section -->
+            <h2 class="container">우리의 서비스를 소개합니다!</h2>
+            <section class="provided_service container">
+                <div class="provide_service1">
+                    <div class="provide_service_text">
+                        <h3>어디서든 검색하세요!</h3>
+                        <p>
+                            네트워크가 연결된 PC, Tablet, Mobile 환경에서
+                            언제 어디서든 서비스 이용이 가능합니다.
+                        </p>
+                    </div>
+                    <img src="./images/boximg01.png" alt="box image01">
+                </div>
+                <div class="provide_service2">
+                    <div class="provide_service_text">
+                        <h3>무엇이든 검색하세요!</h3>
+                        <p>
+                            어떤 애니메이션이든 검색을 통해 찾아보세요!
+                        </p>
+                    </div>
+                    <img src="./images/boximg02.png" alt="box image02">
+                </div>
+                <div class="provide_service3">
+                    <div class="provide_service_text">
+                        <h3>어린이도 가능!!</h3>
+                        <p>
+                            어린이도 좋아하는 애니메이션을 검색해 볼 수 있습니다.
+                        </p>
+                    </div>
+                    <img src="./images/boximg03.png" alt="box image03">
+                </div>
+                <div class="provide_service4">
+                    <div class="provide_service_text">
+                        <h3>어디서든 검색하세요!</h3>
+                        <p>
+                            네트워크가 연결된 PC, Tablet, Mobil
+                        </p>
+                    </div>
+                    <img src="./images/boximg04.png" alt="box image04">
+                </div>
+            </section>
 
 
 
             <!-- QNA TAB -->
-            <ul class="qna_list container cf">
-                <li class="question">
-                    <div class="question_container">
-                        <h2>애니브러리는 어떤 서비스 인가요?</h2>
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </div>
-                    <div class="answer">
-                        내가 아냐 이 씨2발 세끼야^^
-                    </div>
-                </li>
-                <li class="question">
-                    <div class="question_container">
-                        <h2>씨발</h2>
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </div>
-                    <div class="answer">
-                        씨발 애미
-                    </div>
-                </li>
-                <li class="question">
-                    <div class="question_container">
-                        <h2>아 씨발 살자 마렵누</h2>
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </div>
-                    <div class="answer">
-                        개 씨발 ㅈ같다.
-                    </div>
-                </li>
-                <li class="question">
-                    <div class="question_container">
-                        <h2>날씨 애미 디짐?</h2>
-                        <i class="fa fa-plus" aria -hidden="true"></i>
-                    </div>
-                    <div class="answer">
-                        날씨 어매 전기톱으로 썰린것 같으면 개추<br>
-                        헉 그런 말은 삼가해주세요 개추 ㄹㅇㅋㅋ
-                    </div>
-                </li>
-            </ul>
+            <div class="qna_container container">
+                <h2>자주 묻는 질문</h2>
+                <ul class="qna_list cf">
+                    <li class="question">
+                        <div class="question_container">
+                            <h2>애니브러리는 어떤 서비스 인가요?</h2>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="answer">
+                            내가 아냐 이 씨2발 세끼야^^
+                        </div>
+                    </li>
+                    <li class="question">
+                        <div class="question_container">
+                            <h2>씨발</h2>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="answer">
+                            씨발 애미
+                        </div>
+                    </li>
+                    <li class="question">
+                        <div class="question_container">
+                            <h2>아 씨발 살자 마렵누</h2>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="answer">
+                            개 씨발 ㅈ같다.
+                        </div>
+                    </li>
+                    <li class="question">
+                        <div class="question_container">
+                            <h2>날씨 애미 디짐?</h2>
+                            <i class="fa fa-plus" aria -hidden="true"></i>
+                        </div>
+                        <div class="answer">
+                            날씨 어매 전기톱으로 썰린것 같으면 개추<br>
+                            헉 그런 말은 삼가해주세요 개추 ㄹㅇㅋㅋ
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
         </main>
         <!-- /Main Contents -->
     </div>
@@ -158,7 +253,7 @@
     function chkMalId(num) {
         var mal_id = num;
         localStorage.setItem("id", mal_id);
-        alert(mal_id)
+        window.location = "info_contents.html"
     }
     // QNA 관련
     $('.question').click(function () {
@@ -168,6 +263,7 @@
             $('.fa-plus').eq(idx).stop().css({ transform: "rotate(0deg)" })
         } else {
             $('.fa-plus').eq(idx).stop().css({ transform: "rotate(315deg)" })
+            // $('.fa-plus').eq(idx).stop().css({ transform: "rotate(300deg)" })
         }
         $('.answer').stop().slideUp(100);
         $('.answer').eq(idx).stop().slideToggle(200);

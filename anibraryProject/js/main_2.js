@@ -23,7 +23,7 @@ $(() => {
     let anime_top_url = "https://api.jikan.moe/v4/top/anime"
     let request1 = $.ajax({
         url: `${anime_top_url}?start_date=2024-09-08&limit=14&type=tv`,
-        // url: `${anime_top_url}?start_date=2024-09-08&limit=7&rating=r`,
+        // url: `${anime_top_url}?start_date=2024-09-08&limit=7&rating=rx`,
         method: "GET",
         dataType: "json"
     });

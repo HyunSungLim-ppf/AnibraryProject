@@ -15,11 +15,11 @@
             let anime_url = "https://api.jikan.moe/v4/anime"
             let anime_top_url = "https://api.jikan.moe/v4/top/anime"
             let request = $.ajax({
-                // url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&limit=12`,
+                url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&limit=12`,
                 // url: `${anime_url}?q=${search}&sfw&limit=10`,
                 // url: `https://api.jikan.moe/v4/anime?q=${search}&sfw&type=movie&start_date=2015-01-01`,
                 // url: `${anime_top_url}?type=ova&rating=rx`,
-                url: `${anime_top_url}?start_date=2024-09-08&type=movie`,
+                // url: `${anime_top_url}?start_date=2024-09-08&type=movie`,
                 method: "GET",
                 dataType: "json"
             });
