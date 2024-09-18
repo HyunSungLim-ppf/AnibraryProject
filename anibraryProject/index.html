@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./css/reset.css">
     <!-- Swiper Bundle -->
     <link rel="stylesheet" href="./css/swiper-bundle.css">
+    <!-- Header CSS -->
+    <link rel="stylesheet" href="./css/header.css">
     <!-- Main Page CSS -->
     <link rel="stylesheet" href="./css/main.css">
     <!-- jQuery CDN -->
@@ -18,6 +20,29 @@
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <script src="./js/main.js"></script>
+    <script>
+        $(() => {
+            // 검색후 이동 기능
+            $('.search_container input').focus(function () {
+                $('.search_container span').css({ "font-size": "5px" })
+                $(this).css({ display: "block" })
+            })
+
+            $('.search_btn').click(function () {
+                if ($('input[class=input-search]').val() != '') {
+                    alert($('input[id="search"]').val());
+                    searchAnimeByName($('input[id="search"]').val())
+                } else {
+                    $('input[id="search"]').val('');
+                }
+            })
+        })
+        function searchAnimeByName(name) {
+            const anime_name = name;
+            localStorage.setItem("anime_name", anime_name);
+            window.location = "searched_contents.html"
+        }
+    </script>
 </head>
 
 <body>
@@ -29,47 +54,74 @@
                 <a href="#">
                     <img src="./images/main_logo.png" alt="main logo" id="main_logo">
                 </a>
-                <div class="search-box">
-                    <button class="btn-search"><i class="fa fa-search"></i></button>
-                    <input type="text" class="input-search" placeholder="Search Anime By Name...">
+                <!-- <div class="menu_icon">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div> -->
+                <button class="search_btn"><p>Search</p></button>
+                <div class="search_form">
+                    <div class="form-item">
+                        <input type="text" id="search" autocomplete="off" required>
+                        <label for="search">Search Anime Like "Naruto"...</label>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </header>
 
         <!-- Main Swiper -->
         <!-- <section id="main_swiper container"> -->
         <section id="main_swiper" class="container">
             <!-- Swiper TOB STC -->
-            <div class="swiper-container">
+            <div class="swiper-container swiper1">
                 <!--To Be Swiper parent -->
                 <div class="swiper-wrapper">
                     <!-- Swiper Content01 -->
-                    <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img01_jp.png" alt="Swiper Image 01">
-                        <div class="swiper_btn">
-                            <button class="btn">Show Info +</button>
-                            <button class="btn">Show Page</button>
+                    <div class="swiper-slide slide1">
+                        <div class="container">
+                            <div class="swiper_text">
+                                <h1>鬼滅の刃</h1>
+                                <p>
+                                    舞台は、大正日本。 炭を売る心優しき少年・炭治郎の日常は、家族を鬼に皆殺しにされたことで一変した。
+                                </p>
+                            </div>
+                            <div class="swiper_btn">
+                                <button class="btn">Show Info +</button>
+                                <button class="btn">Show Page</button>
+                            </div>
                         </div>
                     </div>
                     <!-- /Swiper Content01 -->
 
                     <!-- Swiper Content02 -->
-                    <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img02_jp.png" alt="Swiper Image 02">
-                        <div class="swiper_btn">
-                            <button class="btn">Show Info +</button>
-                            <button class="btn">Show Page</button>
+                    <div class="swiper-slide slide2">
+                        <div class="container">
+                            <div class="swiper_text">
+                                <h1>呪術廻戦</h1>
+                                <p>
+                                    他者との関わりを恐れ呪術師になることにも生きることにも消極的だった乙骨だが、個性豊かな同級生と関わる内に生きるための自信を持ち、里香を自分から解呪するために呪術師を目指すようになる。
+                                </p>
+                            </div>
+                            <div class="swiper_btn">
+                                <button class="btn">Show Info +</button>
+                                <button class="btn">Show Page</button>
+                            </div>
                         </div>
                     </div>
                     <!-- /Swiper Content02 -->
 
                     <!-- Swiper Content03 -->
-                    <div class="swiper-slide slide">
-                        <img src="./images/main_slide_img03_jp.png" alt="Swiper Image 03">
-                        <div class="swiper_btn">
-                            <button class="btn">Show Info +</button>
-                            <button class="btn">Show Page</button>
+                    <div class="swiper-slide slide3">
+                        <div class="container">
+                            <div class="swiper_text">
+                                <h1>僕ぼくのヒーローアカデミア</h1>
+                                <p>
+                                    『僕のヒーローアカデミア』（ぼくのヒーローアカデミア）は、堀越耕平の同名の漫画を原作とするボンズ制作の日本のアニメ作品。
+                                </p>
+                            </div>
+                            <div class="swiper_btn">
+                                <button class="btn">Show Info +</button>
+                                <button class="btn">Show Page</button>
+                            </div>
                         </div>
                     </div>
                     <!-- /Swiper Content03 -->
@@ -82,47 +134,148 @@
         <main>
             <!-- Top Anime List Section -->
             <!-- TOP ANIME TITLE -->
-            <div class="top_anime_title container">
-                <h2>TOP ANIME</h2>
+            <div class="top_anime container">
+                <!-- <h2>Top Animation</h2> -->
+                <h2>지금 뜨는 애니메이션</h2>
+
+                <!-- TOP ANIME LIST 1 -->
+                <div class="top_anime_banner1">
+                    <ul class="top_anime_list1">
+
+                    </ul>
+                </div>
+
+                <!-- TOP ANIME LIST 2 -->
+                <div class="top_anime_banner2">
+                    <ul class="top_anime_list2">
+
+                    </ul>
+                </div>
+                <!-- /Top Anime ListSection -->
             </div>
 
-            <!-- TOP ANIME LIST 1 -->
-            <div class="top_anime_list1">
+            <!-- Provided Service Section -->
+            <h2 class="container">우리의 서비스를 소개합니다!</h2>
+            <section class="provided_service container">
+                <div class="provide_service1">
+                    <div class="provide_service_text">
+                        <h3>어디서든 검색하세요!</h3>
+                        <p>
+                            네트워크가 연결된 PC, Tablet, Mobile 환경에서
+                            언제 어디서든 서비스 이용이 가능합니다.
+                        </p>
+                    </div>
+                    <img src="./images/boximg01.png" alt="box image01">
+                </div>
+                <div class="provide_service2">
+                    <div class="provide_service_text">
+                        <h3>무엇이든 검색하세요!</h3>
+                        <p>
+                            무슨 애니메이션이든 검색을 통해 찾아보세요! 애니브러리는 수 만 가지 이상의
+                            애니메이션을 검색하여 찾을 수 있습니다.
+                        </p>
+                    </div>
+                    <img src="./images/boximg02.png" alt="box image02">
+                </div>
+                <div class="provide_service3">
+                    <div class="provide_service_text">
+                        <h3>어린이도 가능!!</h3>
+                        <p>
+                            어린이도 좋아하는 애니메이션을 안전하고 간편하게 검색해 볼 수 있습니다.
+                        </p>
+                    </div>
+                    <img src="./images/boximg03.png" alt="box image03">
+                </div>
+                <div class="provide_service4">
+                    <div class="provide_service_text">
+                        <h3>애니메이션 정보가 한눈에!</h3>
+                        <p>
+                            검색한 애니메이션의 이미지, 장르, 타이틀, 줄거리, 트레일러, 시청 및 구입 링크까지
+                            한눈에 확인할 수 있답니다!
+                        </p>
+                    </div>
+                    <img src="./images/boximg04.png" alt="box image04">
+                </div>
+            </section>
+
+
+
+            <!-- QNA TAB -->
+            <div class="qna_container container">
+                <h2>자주 묻는 질문</h2>
+                <ul class="qna_list cf">
+                    <li class="question">
+                        <div class="question_container">
+                            <h3>애니브러리는 어떤 서비스 인가요?</h3>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="answer">
+                            애니브러리는 수만 가지 이상의 애니메이션을 검색하고 세부 정보를 확인할 수 있는 서비스 입니다.
+                            네트워크가 연결된 디바이스를 통해 언제 어디서든 간단하게 애니메이션을 검색하고 세부 정보를
+                            확인할 수 있습니다.
+                        </div>
+                    </li>
+                    <li class="question">
+                        <div class="question_container">
+                            <h3>어린이도 정말 안전한 검색을 할 수 있나요?</h3>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="answer">
+                            네!! 물론입니다. 일부 애니메이션의 검색을 제한하기에 어린이도 안전한 이용이 가능합니다!
+                        </div>
+                    </li>
+                    <li class="question">
+                        <div class="question_container">
+                            <h3>한국어 검색 기능은 지원이 안되나요?</h3>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="answer">
+                            죄송합니다만, 사이트의 자체적인 한국어 검색 및 애니메이션 세부 정보의 한글화는
+                            지원 대상이 아닙니다.
+                        </div>
+                    </li>
+                    <li class="question">
+                        <div class="question_container">
+                            <h3>애니메이션을 시청하려면 어떻게 해야 하나요?</h3>
+                            <i class="fa fa-plus" aria -hidden="true"></i>
+                        </div>
+                        <div class="answer">
+                            애니브러리는 애니메이션을 검색하고 세부 정보를 확인하는 서비스를 중심으로 제공됩니다.
+                            애니메이션을 시청하려면 세부 정보의 시청 및 구입 링크를 통해 정당한 애니메이션 시청 및 구입을
+                            이용해주세요.
+                        </div>
+                    </li>
+                </ul>
             </div>
-
-
-            <!-- TOP ANIME LIST 2 -->
-            <div class="top_anime_list2"></div>
-            <!-- /Top Anime ListSection -->
-
 
         </main>
         <!-- /Main Contents -->
     </div>
-    <script>
-        //Banner
-        timer();
-        var current = 0;
-        var $interval;
-
-        function timer() {
-            var $interval = setInterval(function () { slide() }, 2000);
-        }
-
-        function slide() {
-            $(".top_anime_list1").animate({ left: "-=187px" }, 1000, function () {
-                $(this).css({ "left": 0 });
-                $(".top_anime_list1").append($("ul").children("li").eq(0));
-            });
-            current++;
-            if (current == 5) current = 0;
-        }
-    </script>
 
 
 
 </body>
 <script src="./js/swiper-bundle.js"></script>
-<script src="./js/swiperCustom.js"></script>
+<script src="./js/swiperCustom_1.js"></script>
+<script>
+    function chkMalId(num) {
+        var mal_id = num;
+        localStorage.setItem("id", mal_id);
+        window.location = "info_contents.html"
+    }
+    // QNA 관련
+    $('.question').click(function () {
+        const idx = $(this).index();
+        $('.fa-plus').stop().css({ transform: "rotate(0deg)" })
+        if ($('.fa-plus').eq(idx).css('transform') == "matrix(0.707107, -0.707107, 0.707107, 0.707107, 0, 0)") {
+            $('.fa-plus').eq(idx).stop().css({ transform: "rotate(0deg)" })
+        } else {
+            $('.fa-plus').eq(idx).stop().css({ transform: "rotate(315deg)" })
+            // $('.fa-plus').eq(idx).stop().css({ transform: "rotate(300deg)" })
+        }
+        $('.answer').stop().slideUp(100);
+        $('.answer').eq(idx).stop().slideToggle(200);
+    })
+</script>
 
 </html>

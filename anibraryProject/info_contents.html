@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <!-- Reset CSS -->
     <link rel="stylesheet" href="./css/reset.css">
+    <!-- Header CSS -->
+    <link rel="stylesheet" href="./css/header.css">
     <!-- Page CSS -->
-     <link rel="stylesheet" href="./css/info_content.css">
+    <link rel="stylesheet" href="./css/info_content.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script>
@@ -22,15 +24,15 @@
 
             // searched anime obj
             let anime = {
-                img : "",
-                large_img : "",
-                title_eng : "",
-                title_nip : "",
-                synopsis : "",
+                img: "",
+                large_img: "",
+                title_eng: "",
+                title_nip: "",
+                synopsis: "",
                 score: 0,
-                genre : [],
-                trailer_img : "",
-                trailer_youtube : ""
+                genre: [],
+                trailer_img: "",
+                trailer_youtube: ""
             }
             let anime_url = "https://api.jikan.moe/v4/anime"
             let request = $.ajax({
@@ -47,7 +49,7 @@
                 anime.title_nip = req.data.title_japanese;
                 anime.synopsis = req.data.synopsis;
                 anime.score = req.data.score;
-                for(let i = 0; i<req.data.genres.length; i++){
+                for (let i = 0; i < req.data.genres.length; i++) {
                     anime.genre[i] = req.data.genres[i];
                 }
                 anime.trailer_img = req.data.trailer.images.large_image_url;
@@ -55,33 +57,47 @@
 
                 console.log("url : " + anime.trailer_youtube)
                 // bg
-                $('.imgbg').css({"background-image": `url(${anime.large_img})`})
+                $('.imgbg').css({ "background-image": `url(${anime.large_img})` })
                 // $('.heading').css({"background-image": `url(${anime.large_img})`})
                 // $('.imgbg').append(`<img src="${anime.large_img}" alt="">`)
                 // anime rank
-                $('.rank').append(`<i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;${anime.score}`)
+                if(anime.score){
+                    $('.rank').append(`<i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;${anime.score}`)
+                }
                 // anime title
-                $('.titles').append(`<h2>${anime.title_nip}</h2>`)
-                $('.titles').append(`<h2>${anime.title_eng}</h2>`)
+                if(anime.title_nip){
+                    $('.titles').append(`<h2>${anime.title_nip}</h2>`)
+                }
+                if(anime.title_eng){
+                    $('.titles').append(`<h2>${anime.title_eng}</h2>`)
+                }
                 // anime genre
-                for(let i = 0; i < anime.genre.length; i++){
+                for (let i = 0; i < anime.genre.length; i++) {
                     $('.genres').append(`<p>${anime.genre[i].name}</p>`)
                 }
                 // anime synopsis
-                $('.synopsis').append(`<p>${anime.synopsis}</p>`)
+                if(anime.synopsis){
+                    $('.synopsis').append(`<p>${anime.synopsis}</p>`)
+                }
                 // anime img
                 $('.img').append(`<img src="${anime.img}" alt="">`)
                 // anime trailer img
-                $('.trailer_img').append(`<img src="${anime.trailer_img}" alt="">`)
+                if(anime.trailer_img){
+                    $('.trailer_img').append(`<img src="${anime.trailer_img}" alt="">`)
+                }
+                // $('.trailer_img').css({"background-image": `url("${anime.trailer_img}")`})
                 // anime trailer youtube
                 // $('.trailer_url').append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/e8YBesRKq_U?si=Th9WcDcfgOiqimBe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
-                $('.trailer_url').append(`<iframe src="${anime.trailer_youtube}" loop; frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
+                // $('.trailer_url').append(`<iframe src="${anime.trailer_youtube}" loop; frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
+                if(anime.trailer_youtube){
+                    $('.trailer_url').append(`<iframe src="${anime.trailer_youtube}" autoplay; loop; mute;></iframe>`)
+                }
             });
             console.log(anime)
             request.fail(function (jqXHR, textStatus) {
                 alert("Request failed: " + textStatus);
             });
-           
+
             // 검색후 이동 기능
             $('.search_container input').focus(function () {
                 $('.search_container span').css({ "font-size": "5px" })
@@ -111,13 +127,15 @@
         <header>
             <!-- Logo And Gnb -->
             <div class="logo_gnb container cf">
-                <a href="index_2.html">
+                <a href="index.html">
                     <img src="./images/main_logo.png" alt="main logo" id="main_logo">
                 </a>
                 <!-- <div class="menu_icon">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </div> -->
-                <button class="search_btn">Search</button>
+                <button class="search_btn">
+                    <p>Search</p>
+                </button>
                 <div class="search_form">
                     <div class="form-item">
                         <input type="text" id="search" autocomplete="off" required>
@@ -129,7 +147,8 @@
 
         <!-- Main -->
         <main class="container">
-            <section class="heading">
+            <div class="heading">
+                <!-- Info -->
                 <div class="info">
                     <p class="rank"></p>
                     <div class="title">
@@ -139,7 +158,7 @@
                 </div>
                 <div class="img"></div>
                 <div class="imgbg"></div>
-            </section>
+            </div>
 
             <div class="info2">
                 <p class="rank"></p>
@@ -150,20 +169,21 @@
             </div>
 
             <!-- Synopsis -->
-             <section class="synopsis_section">
+            <section class="synopsis_section">
                 <h2>Synopsis</h2>
-                 <div class="synopsis"></div>
-             </section>
+                <!-- Trailer Image -->
+                <section class="trailer_img">
 
-             <!-- Trailer Image -->
-              <section class="trailer_img">
+                </section>
+                <div class="synopsis"></div>
+            </section>
 
-              </section>
 
-              <!-- Trailer url -->
-               <section class="trailer_url">
-                
-               </section>
+
+            <!-- Trailer url -->
+            <section class="trailer_url">
+                <h2>Trailer</h2>
+            </section>
         </main>
     </div>
 </body>

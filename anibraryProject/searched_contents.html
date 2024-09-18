@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./css/reset.css">
     <!-- Swiper Bundle -->
     <link rel="stylesheet" href="./css/swiper-bundle.css">
+    <!-- Header CSS -->
+     <link rel="stylesheet" href="./css/header.css">
     <!-- Main Page CSS -->
     <link rel="stylesheet" href="./css/searched_contents.css">
     <!-- jQuery CDN -->
@@ -39,7 +41,7 @@
                     $('.tv_animes')
                     .append(`<div class="anime" onclick="chkMalId('${req.data[i].mal_id}')">
                         <img src="${req.data[i].images.jpg.image_url}" alt="" ><br>
-                        <h2>${req.data[i].title_japanese}</h2>
+                        <p>${req.data[i].title_japanese}</p>
                         </div>`)
                 }
             });
@@ -47,41 +49,45 @@
                 alert("Request failed: " + textStatus);
             });
 
-            // // Movie Serise
-            // let movieReq = $.ajax({
-            //     url: `https://api.jikan.moe/v4/anime?q=${anime_name}&sfw&type=movie&order_by=end_date`,
-            //     method: "GET",
-            //     dataType: "json"
-            // });
-            // movieReq.done(function (req) {
-            //     console.log(req)
-            //     for (let i = 0; i < req.data.length; i++) {
-            //         $('.movie_animes')
-            //         .append(`<div class="anime" onclick="chkMalId('${req.data[i].mal_id}')">`)
-            //         .append(`<img src="${req.data[i].images.jpg.image_url}" alt="" ><br>`)
-            //         .append(`<h2>${req.data[i].title_japanese}</h2>`)
-            //         .append(`</div>`)
-            //     }
-            // });
-            // movieReq.fail(function (jqXHR, textStatus) {
-            //     alert("Request failed: " + textStatus);
-            // });
+            // Movie Serise
+            let movieReq = $.ajax({
+                url: `https://api.jikan.moe/v4/anime?q=${anime_name}&sfw&type=movie&order_by=end_date`,
+                method: "GET",
+                dataType: "json"
+            });
+            movieReq.done(function (req) {
+                console.log(req)
+                for (let i = 0; i < req.data.length; i++) {
+                    $('.movie_animes')
+                    .append(`<div class="anime" onclick="chkMalId('${req.data[i].mal_id}')">
+                        <img src="${req.data[i].images.jpg.image_url}" alt="" >
+                        <p>${req.data[i].title_japanese}</p>
+                        </div>`)
+                }
+            });
+            movieReq.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
 
-            // // OVA Serise
-            // let ovaReq = $.ajax({
-            //     url: `https://api.jikan.moe/v4/anime?q=${anime_name}&sfw&type=ova&order_by=end_date`,
-            //     method: "GET",
-            //     dataType: "json"
-            // });
-            // ovaReq.done(function (req) {
-            //     console.log(req)
-            //     for (let i = 0; i < req.data.length; i++) {
-            //         $('.movie_animes').append(`<img src="${req.data[i].images.jpg.image_url}" alt="" onclick="chkMalId('${req.data[i].mal_id}')"><br>`)
-            //     }
-            // });
-            // ovaReq.fail(function (jqXHR, textStatus) {
-            //     alert("Request failed: " + textStatus);
-            // });
+            // OVA Serise
+            let ovaReq = $.ajax({
+                url: `https://api.jikan.moe/v4/anime?q=${anime_name}&sfw&type=ova&order_by=end_date`,
+                method: "GET",
+                dataType: "json"
+            });
+            ovaReq.done(function (req) {
+                console.log(req)
+                for (let i = 0; i < req.data.length; i++) {
+                    $('.ova_animes')
+                    .append(`<div class="anime" onclick="chkMalId('${req.data[i].mal_id}')">
+                        <img src="${req.data[i].images.jpg.image_url}" alt="" ><br>
+                        <p>${req.data[i].title_japanese}</p>
+                        </div>`)
+                }
+            });
+            ovaReq.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
 
             // 검색후 이동 기능
             $('.search_container input').focus(function () {
@@ -113,13 +119,13 @@
         <header>
             <!-- Logo And Gnb -->
             <div class="logo_gnb container cf">
-                <a href="#">
+                <a href="index.html">
                     <img src="./images/main_logo.png" alt="main logo" id="main_logo">
                 </a>
                 <!-- <div class="menu_icon">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </div> -->
-                <button class="search_btn">Search</button>
+                <button class="search_btn"><p>Search</p></button>
                 <div class="search_form">
                     <div class="form-item">
                         <input type="text" id="search" autocomplete="off" required>
@@ -135,19 +141,19 @@
             <!-- Anime TV -->
             <section class="tv container">
                 <h2>TV Series</h2>
-                <div class="tv_animes"></div>
+                <div class="tv_animes box"></div>
             </section>
 
             <!-- Anime Movie -->
             <section class="movie container">
                 <h2>Movie Series</h2>
-                <div class="movie_animes"></div>
+                <div class="movie_animes box"></div>
             </section>
 
             <!-- Anime OVA -->
             <section class="ova container">
                 <h2>OVA Series</h2>
-                <div class="ova_animes"></div>
+                <div class="ova_animes box"></div>
             </section>
         </main>
     </div>
